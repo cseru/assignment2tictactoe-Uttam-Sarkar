@@ -151,6 +151,79 @@ public class Game {
     public String checkGameWinner(char [][]grid){
         String result = "None";
         //Student code goes here ...
+
+        int i,j;
+
+        int horizontalCheckForX ;
+        int horizontalCheckForO ;
+        int verticalCheckForX ;
+        int verticalCheckForO ;
+        int checkForTie = 1;
+
+        for(i = 0; i < 3; i++){
+            horizontalCheckForX = 1;
+            horizontalCheckForO = 1;
+            verticalCheckForX = 1;
+            verticalCheckForO = 1;
+            for(j = 0; j < 3; j++){
+
+                if(grid[i][j] == '-'){
+
+                    checkForTie = 0;
+                }
+
+
+                if(grid[i][j] != 'x'){
+
+                    horizontalCheckForX = 0;
+                }
+                if(grid[i][j] != 'o'){
+
+                    horizontalCheckForO = 0;
+                }
+
+
+                if(grid[j][i] != 'x'){
+
+                    verticalCheckForX = 0;
+                }
+                if(grid[j][i] != 'o'){
+
+                    verticalCheckForO = 0;
+                }
+
+
+            }
+            if( horizontalCheckForX == 1){
+                result = "x wins";
+                return result;
+            }
+            if( horizontalCheckForO == 1){
+                result = "o wins";
+                return result;
+            }
+            if( verticalCheckForX == 1){
+                result = "x wins";
+                return result;
+            }
+            if( verticalCheckForO == 1){
+                result = "o wins";
+                return result;
+            }
+        }
+        if( grid[1][1] == 'x' && ((grid[0][0] == 'x' && grid[2][2] == 'x') || (grid[0][2] == 'x' && grid[2][0] == 'x'))){
+            result = "x wins";
+            return result;
+        }
+        if(grid[1][1] == 'o' && ((grid[0][0] == 'o' && grid[2][2] == 'o') || (grid[0][2] == 'o' && grid[2][0] == 'o'))){
+            result = "o wins";
+            return result;
+        }
+        if(checkForTie == 1) {
+            result = "tie";
+            return result;
+        }
+ //      system.out.println("uttam");
         return result;
     }
 
